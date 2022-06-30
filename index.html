@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Conversion Calculator</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-color: beige;
+      }
+      section {
+        border-radius: 20px;
+        margin: 50px 70px;
+        padding: 70px 100px;
+        background-color: rgb(70, 70, 218);
+        box-shadow: 5px 5px 5px 5px #0009;
+      }
+
+      #error {
+        color: red;
+        transition: 5s ease ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <h1 class="mytexttitle text-center pb-5 text-light">Speed</h1>
+      <form
+        action="#"
+        class="myform container d-flex flex-column flex-md-row justify-content-center"
+      >
+        <div class="mx-3">
+          <select id="option1" class="form-select mb-3" onchange="result()">
+            <option value="MPH">MPH</option>
+            <option value="KPH">KPH</option>
+            <option value="MPS">MPS</option>
+          </select>
+
+          <select id="option2" class="form-select" onchange="result()">
+            <option value="MPH">MPH</option>
+            <option value="KPH">KPH</option>
+            <option value="MPS">MPS</option>
+          </select>
+
+          <input
+            class="form-control mt-3"
+            id="ValNum"
+            type="number"
+            placeholder="Enter a number"
+            onchange="result()"
+          />
+
+          <h4 class="fs-5 my-4 text-light">
+            Answer: <span id="answer"></span>
+            <!-- <p id="error"></p> -->
+          </h4>
+          <!-- <input type="button" value="Convert" onclick="result()" /> -->
+        </div>
+      </form>
+    </section>
+
+    <script>
+      function result() {
+        let input = document.getElementById("ValNum").value;
+        let option1 = document.getElementById("option1").value;
+        let option2 = document.getElementById("option2").value;
+        // let answer = document.getElementById("answer");
+
+        if (input == 0) {
+          document.getElementById("answer").innerHTML = "Please enter a number";
+        } else if (option1 == "MPH" && option2 == "KPH") {
+          document.getElementById("answer").innerHTML = input * 1.60934;
+        } else if (option1 == "MPH" && option2 == "MPS") {
+          document.getElementById("answer").innerHTML =
+            input * 0.44703888888208;
+        } else if (option1 == "KPH" && option2 == "MPS") {
+          document.getElementById("answer").innerHTML =
+            input * 0.27777708736113332355;
+        } else if (option1 == "MPH" && option2 == "MPH") {
+          document.getElementById("answer").innerHTML =
+            "Please select different option to convert";
+        } else if (option1 == "KPH" && option2 == "KPH") {
+          document.getElementById("answer").innerHTML =
+            "Please select different option to convert";
+        } else if (option1 == "MPS" && option2 == "MPS") {
+          document.getElementById("answer").innerHTML =
+            "Please select different option to convert";
+        } else if (option1 == "MPS" && option2 == "MPH") {
+          document.getElementById("answer").innerHTML =
+            input * 0.44703888888208;
+        } else if (option1 == "MPS" && option2 == "KPH") {
+          document.getElementById("answer").innerHTML =
+            input * 0.27777708736113332355;
+        } else if (option1 == "KPH" && option2 == "MPH") {
+          document.getElementById("answer").innerHTML = input * 1.60934;
+        }
+      }
+    </script>
+  </body>
+</html>
